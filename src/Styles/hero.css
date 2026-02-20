@@ -1,0 +1,235 @@
+.hero-section {
+  position: sticky;
+  height: 100vh;
+  width: 100%;
+  background: #0b0b0f;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding-left: 100px;
+  font-family: 'Inter', sans-serif;
+   top: 0;
+}
+
+/* ORBITAL ANIMATION */
+
+.hero-orbital {
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  right: 8%;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* HELLO TEXT */
+
+.hero-orbital-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  letter-spacing: 30px;
+  font-size: 22px;
+  font-weight: 400;
+  color: white;
+  opacity: 0.6;
+}
+
+/* BASE RING */
+
+.hero-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border-style: solid;
+  top: 0;
+  left: 0;
+}
+
+/* Thin rotating circle */
+
+.hero-ring-thin {
+  border-width: 1px;
+  border-color: rgba(255,255,255,0.2);
+  animation: heroSpin 20s linear infinite;
+}
+
+/* Thick partial rotating circle */
+
+.hero-ring-thick {
+  border-width: 2px;
+  border-color: white transparent;
+  transform: rotate(-45deg);
+  animation: heroRotate 15s linear infinite;
+}
+
+/* Small orbit circle */
+
+.hero-orbit {
+  width: 40px;
+  height: 40px;
+  border-width: 2px;
+  border-color: white;
+  top: 80px;
+  right: 80px;
+}
+
+.hero-orbit::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.hero-svg-wrapper {
+  width: 1200px;
+}
+
+.hero-svg-text {
+  width: 100%;
+}
+
+.hero-svg-main {
+  font-size: 120px;
+  font-family: 'Inter', sans-serif;
+  fill: none;
+  stroke: white;
+  stroke-width: 2px;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+/* Animate when class added */
+.hero-svg-text.animate .hero-svg-main {
+  animation: drawText 10s ease forwards;
+}
+
+@keyframes drawText {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Animations */
+
+@keyframes heroRotate {
+  from {
+    transform: rotate(-45deg);
+  }
+  to {
+    transform: rotate(-405deg);
+  }
+}
+
+@keyframes heroSpin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.social-icon {
+  color: rgb(194, 193, 193);
+  font-size: 30px;
+  transition: 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #2352AF; /* your primary color */
+  transform: scale(1.2);
+}
+
+/* 🌈 Gradient Glow */
+.hero-glow {
+  position: absolute;
+  width: 900px;
+  height: 900px;
+  right: -250px;
+  bottom: -250px;
+  background: radial-gradient(circle at center,
+      #ff0055,
+      #ff9900,
+      #ff00cc,
+      #00ffcc);
+  filter: blur(200px);
+  opacity: 0.7;
+  z-index: 0;
+}
+
+/* 🟦 Grid Overlay */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: 1;
+}
+
+/* 📝 Text */
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content h1 {
+  font-size: 120px;
+  line-height: 1;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.hero-thin {
+  font-weight: 300;
+  opacity: 0.7;
+}
+
+/* Socials */
+.hero-socials {
+  position: absolute;
+  left: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  z-index: 2;
+  color: #aaaaaa;
+}
+
+.hero-socials span {
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.hero-socials span:hover {
+  color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero-content h1 {
+    font-size: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 50px;
+  }
+
+  .hero-socials {
+    display: none;
+  }
+}

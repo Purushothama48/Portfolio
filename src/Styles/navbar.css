@@ -1,0 +1,42 @@
+.navbar-wrapper {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.navbar {
+  padding: 30px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.registered {
+  font-size: 12px;
+  vertical-align: super;
+  margin-left: 3px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+  color: white;
+  padding: 10px 10px;
+  border-top: 1px solid rgba(255,255,255,0.3);
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
