@@ -2,57 +2,31 @@
   position: relative;
   min-height: 80vh;
   width: 100%;
-  background: #07070b;
-  padding: 50px 8%;
-  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  padding: 100px 5%;
+  font-family: var(--font-body);
   display: flex;
   justify-content: space-between;
-}
-.tools-icons-container {
-  margin-top: 25px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  width: 100%;
-}
-
-.tool-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 28px;
-  transition: 0.3s ease;
-   color: #ffffff; 
-}
-
-.tool-icon span {
-  font-size: 12px;
-  margin-top: 6px;
-  opacity: 0.8;
-}
-
-.tool-icon:hover {
-  transform: translateY(-4px);
-  opacity: 0.8;
+  gap: 5%;
 }
 
 /* ================= LEFT TEXT ================= */
-
 .stats-left-text {
-  width: 30%;
-  color: #bfbfbf;
-  font-size: 18px;
-  line-height: 1.7;
+  width: 35%;
+  color: var(--text-secondary);
+  font-size: clamp(16px, 1.5vw, 18px);
+  line-height: 1.8;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 /* ================= STATS CONTAINER ================= */
-
 .stats-right-container {
-  width: 55%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* 🔥 changed */
-  gap: 40px;
+  width: 60%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px 40px;
 }
 
 /* Each stat item */
@@ -61,7 +35,9 @@
   display: flex;
   flex-direction: column;
   transform: translateY(60px);
+  opacity: 0;
   transition: all 0.9s cubic-bezier(.22,1,.36,1);
+  padding-left: 80px;
 }
 
 .stats-item.stats-animate {
@@ -69,74 +45,105 @@
   transform: translateY(0);
 }
 
-
 /* Big heading */
 .stats-heading {
-  font-size: 50px;
-  font-weight: 300;
-  color: #ffffff;
-  line-height: 1.05;
-  letter-spacing: -1px;
+  font-size: clamp(30px, 3vw, 42px);
+  font-family: var(--font-heading);
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
-/* Animation trigger */
-.stats-animate {
-  opacity: 1;
-  transform: translateY(0px);
-}
-
-/* Circle badge (now on LEFT side) */
+/* Circle badge */
 .stats-badge {
   position: absolute;
-  top: 1px;
-  left: -100px; /* 🔥 moved from right to left */
-
-  width: 70px;
-  height: 70px;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-size: 20px;
-  font-weight: 500;
-  color: #ffffff;
-
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-
+  font-weight: 600;
+  color: var(--accent-color);
+  background: var(--accent-glow);
+  border: 1px solid rgba(139, 92, 246, 0.2);
   backdrop-filter: blur(10px);
 }
 
-/* ================= RESPONSIVE ================= */
-
-@media (max-width: 1200px) {
-  .stats-heading {
-    font-size: 70px;
-  }
-
-  .stats-badge {
-    width: 55px;
-    height: 55px;
-    font-size: 16px;
-    left: -70px;
-  }
+/* TOOLS ICONS */
+.tools-icons-container {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
 }
 
-@media (max-width: 900px) {
+.tool-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 24px;
+  transition: 0.3s ease;
+  color: var(--text-secondary);
+}
+
+.tool-icon span {
+  font-size: 11px;
+  margin-top: 8px;
+  opacity: 0.8;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.tool-icon:hover {
+  transform: translateY(-4px);
+  color: var(--accent-color);
+  opacity: 1;
+}
+
+/* ================= ITEM-SPECIFIC DELAYS ================= */
+.stats-item:nth-child(1) { transition-delay: 0.1s; }
+.stats-item:nth-child(2) { transition-delay: 0.2s; }
+.stats-item:nth-child(3) { transition-delay: 0.3s; }
+.stats-item:nth-child(4) { transition-delay: 0.4s; }
+
+/* ================= KEYFRAMES ================= */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
   .stats-section-wrapper {
     flex-direction: column;
     gap: 60px;
   }
-
   .stats-left-text,
   .stats-right-container {
     width: 100%;
   }
+}
 
+@media (max-width: 768px) {
+  .stats-right-container {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .stats-item {
+    padding-left: 70px;
+  }
   .stats-badge {
-    left: 0;
-    top: -10px;
+    width: 50px;
+    height: 50px;
+    font-size: 16px;
+  }
+  .stats-section-wrapper {
+    padding: 60px 4%;
   }
 }

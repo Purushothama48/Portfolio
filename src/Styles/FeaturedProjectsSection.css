@@ -1,154 +1,134 @@
+/* ================= BASE ================= */
+
 .fp-wrapper {
-  position: relative;
-  background: #06070c;
-  color: white;
-  font-family: "Inter", sans-serif;
+  background: var(--bg-secondary);
+  font-family: var(--font-body);
+  padding: 120px 5%;
 }
 
-.fp-sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
-}
-
-/* TOP SECTION */
+/* ================= TOP ================= */
 
 .fp-top {
-  position: absolute;
-  top: 80px;
-  left: 100px;
-  right: 100px;
   display: flex;
   justify-content: space-between;
-  z-index: 5;
+  align-items: flex-start;
+  margin-bottom: 60px;
 }
 
-.fp-pill {
-  display: inline-block;
-  border: 1px solid rgba(255,255,255,0.2);
-  padding: 8px 18px;
-  border-radius: 40px;
-  font-size: 12px;
-  letter-spacing: 1px;
-  margin-bottom: 20px;
+.fp-left {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
 }
 
 .fp-left p {
-  max-width: 300px;
-  font-size: 16px;
+  max-width: 400px;
+  font-size: 15px;
   line-height: 1.6;
-  opacity: 0.8;
 }
 
-.fp-right a {
-  text-decoration: none;
-  color: white;
-  padding: 10px 0;
-  border-top: 1px solid rgba(255,255,255,0.3);
-  border-bottom: 1px solid rgba(255,255,255,0.3);
+.fp-pill {
+  border: 1px solid var(--border-color);
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  background: rgb(255, 255, 255);
 }
 
-/* BIG BG TEXT */
+/* ================= GRID ================= */
 
-.fp-bg-text {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  font-size: 300px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.05);
-  pointer-events: none;
-  white-space: nowrap;
-}
-
-/* TRACK */
-
-.fp-track {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  transition: transform 0.15s linear;
+.fp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
 }
 
 /* CARD */
-
-.fp-card {
-  position: relative;
-  width: 800px;
-  height: 520px;
-  margin: 0 auto;
-  margin-top: 220px;
-  border: 1px solid rgba(255,255,255,0.2);
-  background: #0c0c12;
+.fp-grid-card {
+  border-radius: 16px;
   overflow: hidden;
-  cursor: none;
-  text-decoration: none;
-  color: inherit;
-  display: block;
+  background: #0d0d12;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
 }
 
-.fp-card img {
+.fp-grid-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.fp-grid-card img {
   width: 100%;
-  height: 65%;
+  height: 240px;
   object-fit: cover;
 }
 
-.fp-content {
-  padding: 30px;
-  text-align: center;
+/* CONTENT */
+.fp-grid-content {
+  padding: 18px;
 }
 
-.fp-content h3 {
-  font-size: 22px;
+.fp-grid-content h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.fp-grid-content p {
+  font-size: 14px;
   margin-bottom: 10px;
+  color: var(--text-secondary);
 }
 
-.fp-content p {
-  font-size: 14px;
-  opacity: 0.8;
-  margin-bottom: 15px;
+.fp-grid-content span {
+  font-size: 12px;
+  color: var(--accent-color);
+  text-transform: uppercase;
 }
 
-.fp-content span {
-  font-size: 13px;
-  opacity: 0.6;
+/* ================= TABLET ================= */
+
+@media (max-width: 1024px) {
+  .fp-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-/* VIEW CURSOR */
+/* ================= MOBILE ================= */
 
-.fp-view {
-  position: absolute;
-  left: -40px;
-  top: 50%;
-  transform: translateY(-50%) rotate(-90deg);
-  font-size: 14px;
-  opacity: 0.6;
+@media (max-width: 768px) {
+
+  .fp-wrapper {
+    padding: 80px 20px;
+  }
+
+  .fp-top {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .fp-left {
+    flex-direction: column;
+  }
+
+  .fp-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fp-grid-card img {
+    height: 200px;
+  }
 }
 
-.fp-card::after {
-  content: "View";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  background: rgb(255, 255, 255);
-  color: black;
-  padding: 12px 24px;
-  border-radius: 40px;
-  font-size: 14px;
-  transition: 0.3s ease;
-}
+/* ================= SMALL MOBILE ================= */
 
-.fp-card:hover::after {
-  transform: translate(-50%, -50%) scale(1);
-}
-.fp-card img {
-  transition: 0.5s ease;
-}
+@media (max-width: 480px) {
 
-.fp-card:hover img {
-  filter: blur(4px) brightness(0.6);
-  transform: scale(1.05);
+  .fp-grid-content h3 {
+    font-size: 16px;
+  }
+
+  .fp-grid-content p {
+    font-size: 13px;
+  }
 }
